@@ -1,26 +1,51 @@
-﻿@model IEnumerable<EntidadArticulo>
+﻿@model IEnumerable<Tarea_1.Models.EntidadArticulo>
 
-<div class="row">
-	<div class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Nombre</th>
-					<th>Precio</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach (var item in Model)
-				{
-					<tr>
-						<td>@item.Id</td>
-						<td>@item.Nombre</td>
-						<td>@item.Precio</td>
-					</tr>
-				}
-			</tbody>
-		</table>
-	</div>
+@{
+    ViewData["Title"] = "Articulos";
+}
 
-</div>
+<h1>Lista de articulos</h1>
+
+<!--
+<p>
+    <a asp-action="Create">Agregar articulo</a>
+</p>
+-->
+<body>
+    <button onclick="location.href='http://localhost:5030/EntidadArticuloes/Create'">Agregar articulo</button>
+</body>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,12 +1,15 @@
 ﻿@model Tarea_1.Models.EntidadArticulo
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Agregar";
 }
 
+<!--
 <h1>Create</h1>
+-->
 
-<h4>EntidadArticulo</h4>
+<h4>Articulo</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -22,17 +25,38 @@
                 <input asp-for="Precio" class="form-control" />
                 <span asp-validation-for="Precio" class="text-danger"></span>
             </div>
+
+            <h5> </h5>
+
             <div class="form-group">
+                
+                
+                
                 <input type="submit" value="Create" class="btn btn-primary" />
+
+
+
             </div>
+
         </form>
     </div>
 </div>
 
+<!--
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Volver a la lista</a>
 </div>
 
+<body>
+    <button onclick="location.href='http://localhost:5030/EntidadArticuloes'">Llévame a otro lado</button>
+</body>
+-->
+
+<h6> </h6>
+
+<body>
+    <button onclick="location.href='http://localhost:5030/EntidadArticuloes'">Volver a la lista</button>
+</body>
+
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }
