@@ -36,7 +36,7 @@ namespace Tarea_1.Controllers
             cmd.ExecuteNonQuery();
             //conn.Close();
             */
-			IEnumerable<EntidadArticulo> articulos = (IEnumerable<EntidadArticulo>) _context.Articulo.FromSqlInterpolated($"spPrueba_Consulta").AsAsyncEnumerable();
+			IEnumerable<EntidadArticulo> articulos = (IEnumerable<EntidadArticulo>) _context.Articulo.FromSqlInterpolated($"SP_ConsultaOrdenadaAlfabticamente").AsAsyncEnumerable();
             
 
 			//IEnumerable<EntidadArticulo> articulos = _context.Articulo.ToList();
@@ -78,19 +78,29 @@ namespace Tarea_1.Controllers
         {
             if (ModelState.IsValid)
             {
-				SqlConnection conn = (SqlConnection)_context.Database.GetDbConnection();
-				SqlCommand cmd = conn.CreateCommand();
-				conn.Open();
-				cmd.CommandType = System.Data.CommandType.StoredProcedure;
-				cmd.CommandText = "spPrueba_Insertar";
-                cmd.Parameters.Add("@Nombre", System.Data.SqlDbType.NVarChar, 128).Value = entidadArticulo.Nombre + " _Add_Using_SP";
-				cmd.Parameters.Add("@Precio", System.Data.SqlDbType.Money).Value = entidadArticulo.Precio;
-				cmd.Parameters.Add("@Id", System.Data.SqlDbType.Int).Value = entidadArticulo.Id;
-				cmd.ExecuteNonQuery();
-				conn.Close();
-				//_context.Add(entidadArticulo);
-				//await _context.SaveChangesAsync();
-				return RedirectToAction(nameof(Index));
+                try
+                {
+                    SqlConnection conn = (SqlConnection)_context.Database.GetDbConnection();
+                    SqlCommand cmd = conn.CreateCommand();
+                    conn.Open();
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandText = "spPrueba_Insertar";
+                    cmd.Parameters.Add("@Nombre", System.Data.SqlDbType.NVarChar, 128).Value = entidadArticulo.Nombre;
+                    cmd.Parameters.Add("@Precio", System.Data.SqlDbType.Money).Value = entidadArticulo.Precio;
+                    cmd.Parameters.Add("@Id", System.Data.SqlDbType.Int).Value = entidadArticulo.Id;
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    //_context.Add(entidadArticulo);
+                    //await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (SqlException ex)
+                {
+                    // Captura la excepción generada por el procedimiento almacenado
+                    string errorMessage = ex.Message;
+                    // Muestra el mensaje de error en tu página
+                    TempData["Message"] = "Ocurrió un error: " + ex.Message;
+                }
             }
             return View(entidadArticulo);
         }
