@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Tarea_1.Data;
 using Tarea_1.Models;
@@ -22,9 +23,26 @@ namespace Tarea_1.Controllers
         // GET: EntidadArticuloes
         public async Task<IActionResult> Index()
         {
-              return _context.Articulo != null ? 
-                          View(await _context.Articulo.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDBContext.Articulo'  is null.");
+              //return _context.Articulo != null ? 
+                //          View(await _context.Articulo.ToListAsync()) :
+                  //        Problem("Entity set 'ApplicationDBContext.Articulo'  is null.");
+
+            /*
+            SqlConnection conn = (SqlConnection) _context.Database.GetDbConnection();
+            SqlCommand cmd = conn.CreateCommand();
+            conn.Open();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "spPrueba_Consulta";
+            cmd.ExecuteNonQuery();
+            //conn.Close();
+            */
+			IEnumerable<EntidadArticulo> articulos = (IEnumerable<EntidadArticulo>)_context.Articulo.FromSqlInterpolated($"spPrueba_Consulta").AsAsyncEnumerable();
+            
+
+			//IEnumerable<EntidadArticulo> articulos = _context.Articulo.ToList();
+			
+            return View(articulos);
+
         }
 
         // GET: EntidadArticuloes/Details/5
