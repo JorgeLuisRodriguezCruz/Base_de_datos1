@@ -11,9 +11,6 @@
     <a asp-action="Create">Agregar articulo</a>
 </p>
 -->
-<body>
-    <button onclick="location.href='http://localhost:5030/EntidadArticuloes/Create'">Agregar articulo</button>
-</body>
 
 <table class="table">
     <thead>
@@ -58,4 +55,9 @@
         </tr>
 }
     </tbody>
+
 </table>
+
+<a asp-action="Create">
+	<input type="submit" value="Agregar" class="btn btn-primary">
+</a>

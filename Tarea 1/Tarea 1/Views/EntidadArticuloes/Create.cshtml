@@ -29,18 +29,17 @@
             <h5> </h5>
 
             <div class="form-group">
-                
-                
-                
-                <input type="submit" value="Create" class="btn btn-primary" />
-
-
-
+                <input type="submit" value="Confirmar" class="btn btn-primary" />
             </div>
 
         </form>
     </div>
 </div>
+
+<a asp-action="Index">
+    <h1>  </h1>
+	<input type="submit" value="Cancelar" class="btn btn-primary">
+</a>
 
 <!--
 <div>
@@ -52,11 +51,20 @@
 </body>
 -->
 
-<h6> </h6>
-
+<!--
 <body>
     <button onclick="location.href='http://localhost:5030/EntidadArticuloes'">Volver a la lista</button>
 </body>
+-->
+
+<!--<a asp-action="Prueba_kkk"> 
+
+<a asp-action="Prueba_kkk">
+    <input value="Prueba" class="btn btn-primary">
+</a>
+
+-->
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} }

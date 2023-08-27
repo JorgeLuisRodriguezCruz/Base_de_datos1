@@ -159,5 +159,21 @@ namespace Tarea_1.Controllers
         {
           return (_context.Articulo?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+
+
+        public IActionResult PRUEBA()
+        {
+            return View();
+        }
+
+        public IActionResult Prueba_kkk()
+        {
+            return RedirectToAction(nameof(PRUEBA));
+            //return NotFound();
+        }
+
+
+
     }
 }
