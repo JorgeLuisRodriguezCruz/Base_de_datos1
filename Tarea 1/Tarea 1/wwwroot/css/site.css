@@ -8,11 +8,26 @@ html {
   }
 }
 
+.table {
+    color:#e9e9e9 
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #50a37d;
+    border-color: #a0e8c7;
+}
+
+
 html {
+    background-color: darkslategray;
   position: relative;
   min-height: 100%;
+  text-decoration-color: white;
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: darkslategray;
+    color: white;
+    margin-bottom: 60px;
 }
