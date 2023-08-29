@@ -3,14 +3,9 @@
 @{
     ViewData["Title"] = "Articulos";
 }
-
+<h1></h1>
 <h1>Lista de articulos</h1>
 
-<!--
-<p>
-    <a asp-action="Create">Agregar articulo</a>
-</p>
--->
 
 <table class="table">
     <thead>
@@ -50,9 +45,6 @@
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
                 
             </td>
-                <td>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
             -->
 
         </tr>
@@ -65,5 +57,3 @@
 	<input type="submit" value="Agregar" class="btn btn-primary">
 </a>
 
-<h1> </h1>
-<input type="submit" value="Cerrar" class="btn btn-primary" onclick= "window.close()"/>
