@@ -84,7 +84,7 @@ namespace Tarea_1.Controllers
                     SqlCommand cmd = conn.CreateCommand();
                     conn.Open();
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.CommandText = "spPrueba_Insertar";
+                    cmd.CommandText = "SP_InsertarArticulo";
                     cmd.Parameters.Add("@Nombre", System.Data.SqlDbType.NVarChar, 128).Value = entidadArticulo.Nombre;
                     cmd.Parameters.Add("@Precio", System.Data.SqlDbType.Money).Value = entidadArticulo.Precio;
                     cmd.Parameters.Add("@Id", System.Data.SqlDbType.Int).Value = entidadArticulo.Id;
